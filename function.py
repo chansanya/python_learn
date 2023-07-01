@@ -1,3 +1,8 @@
+def run():
+    print("快跑啊")
+
+
+
 def selectGame(player):
     "选择游戏"
     print("\n")
@@ -15,16 +20,16 @@ def play(gameCode):
         print("==>:犹豫就会败北")
         return True
     elif '3' == gameCode:
-        print("==>:垃圾游戏狗都不玩")   
+        print("==>:垃圾游戏狗都不玩")
         return True
     elif '4' == gameCode:
-        print("==>:请打开WeGame交流")  
+        print("==>:请打开WeGame交流")
         return True
     elif 'q' == gameCode:
-        print("==>:不玩了，再见。。。") 
+        print("==>:不玩了，再见。。。")
         return False
     else:
-        print("==>:请重新选择")  
+        print("==>:请重新选择")
         return True
 
 def runPC():
@@ -34,8 +39,8 @@ def runPC():
 
 
 def setUser(name,age,**nila):
-    nila["name"] = name;
-    nila["age"] = age;
+    nila["name"] = name
+    nila["age"] = age
     return nila
 
 

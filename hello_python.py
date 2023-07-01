@@ -14,10 +14,12 @@ print(msg)
 #字符串
 #在Python中，用引号括起的都是字符串，其中的引号可以是单引号，也可以是双引号，如下所示：
 
-test_str = "my name is leihuangyan";
+# test_str = "my name is leihuangyan";
+test_str = "xiao yan"
 print(test_str.title())
 print(test_str.lower())
 print(test_str.upper())
+#填充
 print(test_str.zfill(2))
 
 
@@ -109,7 +111,6 @@ for nameItem2 in names:
     #循环下，无缩进的代码只会执行一次
     print(f"{nameItem2}，开黑了")
 print("快快快上号")
-    
 
 print(f"现在开黑有:{len(names3)}")
 
@@ -173,3 +174,6 @@ start()
 
 #全部引入 不推荐
 # from function import  *
+
+
+
