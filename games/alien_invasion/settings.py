@@ -6,6 +6,9 @@ class Settings:
         # 屏幕设置
         self.screen_width = 800
         self.screen_height = 600
+        self.is_full_scree = False
+        # self.is_full_scree = True
+
         self.bg_color = (230, 230, 230)
         self.caption = '外星人入侵'
         self.step = 100

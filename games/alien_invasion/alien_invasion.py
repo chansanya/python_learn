@@ -15,8 +15,14 @@ class AlienInvasion:
         # 设置
         self.settings = Settings()
 
-        # 记录屏幕
-        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
+        if not self.settings.is_full_scree:
+            # 记录屏幕
+            self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
+        else:
+            self.screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
+            self.settings.screen_width = self.screen.get_rect().width
+            self.settings.screen_height = self.screen.get_rect().height
+
         # 设置背景色。
         self.bg_color = self.settings.bg_color
         # 设置游戏属性
@@ -59,28 +65,26 @@ class AlienInvasion:
 
             if event.type == pygame.KEYDOWN:
                 """键盘按下"""
-                print("键盘按下")
+                if event.key == pygame.K_ESCAPE:
+                    sys.exit()
+
                 if event.key == pygame.K_LEFT:
-                    print("左移动")
-                    self.ship.rect.x -= self.settings.step
+                    self.ship.rect.left -= self.settings.step
                     if self.ship.rect.left < self.ship.screen_rect.left:
                         self.ship.rect.left = self.ship.screen_rect.left
 
                 if event.key == pygame.K_RIGHT:
-                    print("右移动")
-                    self.ship.rect.x += self.settings.step
+                    self.ship.rect.left += self.settings.step
                     if self.ship.rect.right > self.ship.screen_rect.right:
                         self.ship.rect.right = self.ship.screen_rect.right
 
                 if event.key == pygame.K_UP:
-                    print("上移动")
-                    self.ship.rect.y -= self.settings.step
+                    self.ship.rect.top -= self.settings.step
                     if self.ship.rect.top < self.ship.screen_rect.top:
                         self.ship.rect.top = self.ship.screen_rect.top
 
                 if event.key == pygame.K_DOWN:
-                    print("下移动")
-                    self.ship.rect.y += self.settings.step
+                    self.ship.rect.bottom += self.settings.step
                     if self.ship.rect.bottom > self.ship.screen_rect.bottom:
                         self.ship.rect.bottom = self.ship.screen_rect.bottom
 
