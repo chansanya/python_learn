@@ -9,18 +9,26 @@ class Settings:
         self.is_full_scree = False
         # self.is_full_scree = True
 
-        self.bg_color = (230, 230, 230)
+        self.bg_color = (255, 255, 255)
 
         self.caption = '外星人入侵'
 
         # 移动速度
-        self.step = 100
+        self.step = 10
         # 大小
         self.step_width = 50
         self.step_height = 50
 
         # 子弹设置
-        self.bullet_speed = 1.0
-        self.bullet_width = 3
-        self.bullet_height = 15
+        self.bullet_speed = 0.5
+        # 子弹宽高
+        self.bullet_width = 15
+        self.bullet_height = 25
+        # 子弹颜色
         self.bullet_color = (60, 60, 60)
+        # 子弹数
+        self.bullets_allowed = 3
+
+        # 外星人宽高
+        self.alien_width = 50
+        self.alien_height = 50

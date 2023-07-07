@@ -9,7 +9,8 @@ class Ship:
         self.screen = ai_game.screen
         self.screen_rect = ai_game.screen.get_rect()
         # 加载飞船图像并获取其外接矩形。
-        ship_image = pygame.image.load('images/ship.gif')
+        # ship_image = pygame.image.load('images/ship.gif')
+        ship_image = pygame.image.load('images/supper_ship.png')
         # 缩放
         self.image = pygame.transform.scale(ship_image, (ai_game.settings.step_width, ai_game.settings.step_height))
         self.rect = self.image.get_rect()

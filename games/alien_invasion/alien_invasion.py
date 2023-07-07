@@ -2,6 +2,9 @@
 
 import sys
 import pygame
+
+from bullet import Bullet
+from alien import Alien
 from settings import Settings
 from ship import Ship
 
@@ -30,12 +33,44 @@ class AlienInvasion:
 
         # 飞船
         self.ship = Ship(self)
+        # 子弹
+        self.bullets = pygame.sprite.Group()
+        # 创建外星人
+        self.aliens = pygame.sprite.Group()
+        # 创建外星人编队
+        self._create_fleet()
+
+
+    def _create_fleet(self):
+        """创建外星人群。"""
+        # 创建一个外星人。
+        alien = Alien(self)
+        self.aliens.add(alien)
+
+        alien_width = alien.rect.width
+        # 计算可容纳宽度： 屏幕宽度-减去2个单位宽度
+        available_space_x = self.settings.screen_width - (2 * alien_width)
+        # 计算可容纳单位： 可容纳宽度 / 单位宽度
+        number_aliens_x = available_space_x // (2 * alien_width)
+        # 创建第一行外星人。
+        for alien_number in range(number_aliens_x):
+            # 创建一个外星人并将其加入当前行。
+            alien = Alien(self)
+            # 计算起始位置: 边距 + （单位+外边距）* 单位序列
+            alien.x = alien_width + 2 * alien_width * alien_number
+            alien.rect.x = alien.x
+            self.aliens.add(alien)
 
     def run_game(self):
         """开始游戏的主循环"""
         while True:
+            # 设置
             self._config()
+            # 检查事件
             self._check_evens()
+            # 更新子弹列表
+            self._update_bullets()
+            # 重新绘制屏幕
             self._update_screen()
 
     def _config(self):
@@ -45,14 +80,30 @@ class AlienInvasion:
         # 用于检测长按事件的计时器
         pygame.key.set_repeat(delay, interval)
 
+    # 更新子弹数
+    def _update_bullets(self):
+        self.bullets.update()
+        for bullet in self.bullets.copy():
+            # 如果子弹下边界小于0 也就是屏幕顶部
+            if bullet.rect.bottom <= 0:
+                # 移除此子弹
+                self.bullets.remove(bullet)
+
+    # 更新屏幕信息
     def _update_screen(self):
         """更新屏幕"""
-
         # 重新绘制屏幕
         self.screen.fill(self.bg_color)
-
         # 定位飞船位置
         self.ship.blitme()
+
+        # 绘制子弹
+        for bullet in self.bullets.sprites():
+            bullet.draw_bullet()
+
+        # 绘制外星人
+        self.aliens.draw(self.screen)
+
         # 让最近绘制的屏幕可见。
         pygame.display.flip()
 
@@ -88,8 +139,20 @@ class AlienInvasion:
                     if self.ship.rect.bottom > self.ship.screen_rect.bottom:
                         self.ship.rect.bottom = self.ship.screen_rect.bottom
 
+                if event.key == pygame.K_SPACE:
+                    # 发射子弹
+                    self._fire_bullet()
+
+    def _fire_bullet(self):
+        """创建一颗子弹，并将其加入编组bullets中。"""
+        if len(self.bullets) < self.settings.bullets_allowed:
+            # 没有超出子弹上限，添加一个子弹
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
+
 
 if __name__ == '__main__':
     ai = AlienInvasion()
     # 运行游戏
     ai.run_game()
+
