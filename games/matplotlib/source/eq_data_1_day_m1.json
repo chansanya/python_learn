@@ -1,0 +1,16 @@
+{
+  "type": "Feature",
+  "properties": {
+    "mag": 0.96,
+    "title": "M 1.0 - 8km NE of Aguanga, CA"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -116.7941667,
+      33.4863333,
+      3.22
+    ]
+  },
+  "id": "ci37532978"
+}
