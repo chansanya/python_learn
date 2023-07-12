@@ -1,16 +1,44 @@
 {
-  "type": "Feature",
-  "properties": {
-    "mag": 0.96,
-    "title": "M 1.0 - 8km NE of Aguanga, CA"
+  "metadata": {
+    "generated": 1550361461000,
+    "url": "https://earthquake.usgs.gov/earthquakes/.../1.0_day.geojson",
+    "title": "USGS Magnitude 1.0+ Earthquakes, Past Day",
+    "status": 200,
+    "api": "1.7.0",
+    "count": 158
   },
-  "geometry": {
-    "type": "Point",
-    "coordinates": [
-      -116.7941667,
-      33.4863333,
-      3.22
-    ]
-  },
-  "id": "ci37532978"
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 0.96,
+        "title": "DATA-1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.7941667,
+          33.4863333,
+          3.22
+        ]
+      },
+      "id": "ci37532978"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 0.86,
+        "title": "DATA-2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -126.7941667,
+          43.4863333,
+          5.22
+        ]
+      },
+      "id": "ci37532979"
+    }
+  ]
 }
